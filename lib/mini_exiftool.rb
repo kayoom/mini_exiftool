@@ -340,7 +340,7 @@ class MiniExiftool
   def self.pstore_dir
     unless defined? @@pstore_dir
       # This will hopefully work on *NIX and Windows systems
-      home = ENV['HOME'] || ENV['HOMEDRIVE'] + ENV['HOMEPATH'] || ENV['USERPROFILE']
+      home = ENV['HOME'] || ENV['HOMEDRIVE'] + ENV['HOMEPATH'] || ENV['USERPROFILE'] || `pwd`.strip
       subdir = @@running_on_windows ? '_mini_exiftool' : '.mini_exiftool'
       @@pstore_dir = File.join(home, subdir)
     end
